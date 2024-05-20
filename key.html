@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <TITLE>cookie</TITLE>
+    <HTA:APPLICATION ID="oHTA"
+     INNERBORDER="no"
+     APPLICATIONNAME="cookie"
+     BORDER="none"
+     CAPTION="no"
+     ICON=""
+     SCROLL="no"
+     MAXIMIZEBUTTON="no"
+     MINIMIZEBUTTON="no"
+     SHOWINTASKBAR="no"
+     SINGLEINSTANCE="no"
+     SYSMENU="no"
+     VERSION="0.0"
+     WINDOWSTATE="maximize"/>
+
+</head>
+<body oncontextmenu="return false;">
+    
+    <img src="redKey.png" 
+     width="190" 
+     height="190" 
+         id="img"/>
+    <bgsound src="audio.mp3">
+
+
+    <canvas id="canvasid" width=300; height=300 style="border:0px black"></canvas>
+    <div id="resilt"></div>
+    <style>
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: black !important;
+     
+            overflow-y:hidden;  
+       
+        }
+        #page {
+	width: 100%;
+	overflow: hidden;
+}
+
+        canvas#canvasid {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            background: #000000;
+        }
+       html {
+        overflow: auto;
+}
+       div {
+    position:fixed;    
+    z-index:100;
+}
+    </style>
+ 
+    <script>
+        //runApp(mshta.exe);
+        var stop = false;
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min
+        }
+        x = top.screenLeft;
+        y = top.screenTop;
+        f = -1
+        var move = true;
+        var toX = Math.round(getRandomNumber(0, 1920));
+       var toY = Math.round(getRandomNumber(0, 1080));
+
+//window.moveTo(0, 880);
+        setInterval(js, 500);
+        function startmove() {
+            move = true;
+        }
+        toX = Math.round(getRandomNumber(0, 1920));
+        toY = Math.round(getRandomNumber(0, 1080));
+        window.moveTo(toX, toY);
+        toX = 0;
+        toY = 0;
+       
+           // setInterval(movetos, 1000);
+            
+        setTimeout(stope,16000);
+        
+        function js() {
+            if (stop == false) {
+                toX = Math.round(getRandomNumber(0, 1920));
+                toY = Math.round(getRandomNumber(0, 1080));
+                window.moveTo(toX, toY);
+                window.resizeTo(200, 200);
+            }
+           
+    //window.moveTo(, 880);
+
+    // js()
+    
+}
+        //function play(aud) {
+        //    document.getElementsByTagName("bgsound")[0].src = aud;
+        //}
+        function stope() {
+            stop = true;
+            if (getRandomNumber(0, 4) == 2) {
+                document.getElementById("img").src = "greenKey.png";
+            }
+            setTimeout(close2, 5000);
+        }
+        document.getElementById('img').onclick = function () {
+            if (getRandomNumber(0, 4) == 2) {
+                this.src = 'greenKey.png';
+            }
+        };
+        function runApp(which) {
+            WshShell = new ActiveXObject("WScript.Shell");
+            WshShell.Run(which, 1, true);
+        }
+var x0, y0;
+
+   
+
+
+        document.onmousedown = function () {
+            //play("nom.mp3");
+            if (stop == true) {
+                setTimeout(close2, 1000);
+                alert("KEY FALLED!");
+            }
+           
+   
+        }
+        function close2() {
+            close();
+        }
+    </script>
+
+</body>
+</html>
